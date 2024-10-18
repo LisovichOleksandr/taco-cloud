@@ -19,6 +19,9 @@ target/
 *.iml
 *.ipr
 
+### Task ###
+src/main/java/ua/lisovich/tacos/task_1
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

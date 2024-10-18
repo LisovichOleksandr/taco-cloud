@@ -10,7 +10,7 @@
 <img style="height: 100px; width: 150px;" th:src="@{/images/butterfly.png}"/>
 <form method="POST" th:object="${taco}">
     <div class="grid">
-        <div class="ingredient-group" id="wraps">
+        <div id="wraps">
             <h3>Designate your wrap:</h3>
             <div th:each="ingredient : ${wrap}">
                 <input th:field="*{ingredients}" type="checkbox"

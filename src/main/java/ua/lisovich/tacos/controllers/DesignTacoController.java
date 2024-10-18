@@ -3,10 +3,7 @@ package ua.lisovich.tacos.controllers;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import ua.lisovich.tacos.Ingredient;
 import ua.lisovich.tacos.Ingredient.Type;
 import ua.lisovich.tacos.Taco;
@@ -59,6 +56,7 @@ public class DesignTacoController {
         return "design";
     }
 
+    // Вспомогательний метод для фильтрации по типу
     private Iterable<Ingredient> filterByType(
             List<Ingredient> ingredients, Type type){
         return ingredients
@@ -66,4 +64,13 @@ public class DesignTacoController {
                 .filter(x -> x.getType().equals(type))
                 .collect(Collectors.toList());
     }
+
+    @PostMapping
+    public String processTaco(@ModelAttribute Taco taco,
+                              @ModelAttribute TacoOrder tacoOrder){
+        tacoOrder.addTaco(taco);
+        log.info("Processing taco: {}", taco);
+        return "redirect:/design";
+    }
+
 }
