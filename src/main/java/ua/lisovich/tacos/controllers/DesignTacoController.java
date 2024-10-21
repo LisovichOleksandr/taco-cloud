@@ -67,10 +67,13 @@ public class DesignTacoController {
 
     @PostMapping
     public String processTaco(Taco taco,
-                              @ModelAttribute TacoOrder tacoOrder){
+                              @ModelAttribute TacoOrder tacoOrder,
+                              Model model){
         tacoOrder.addTaco(taco);
+//        model.addAttribute("tacoOrder", tacoOrder);
         log.info("Processing taco: {}", taco);
-        return "redirect:/design";
+        log.info("Processing taco order: {}", tacoOrder);
+        return "redirect:/orders/current";
     }
 
 }
