@@ -4,10 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ua.lisovich.tacos.Ingredient;
-import ua.lisovich.tacos.Ingredient.Type;
-import ua.lisovich.tacos.Taco;
-import ua.lisovich.tacos.TacoOrder;
+import ua.lisovich.tacos.entity.Ingredient;
+import ua.lisovich.tacos.entity.TypeIngredient;
+import ua.lisovich.tacos.entity.Taco;
+import ua.lisovich.tacos.entity.TacoOrder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,20 +22,20 @@ public class DesignTacoController {
     @ModelAttribute
     public void addIngredientToModel(Model model){
         List<Ingredient> ingredients = Arrays.asList(
-                new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
-                new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
-                new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
-                new Ingredient("CARN", "Carnitas", Type.PROTEIN),
-                new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
-                new Ingredient("LETC", "Lettuce", Type.VEGGIES),
-                new Ingredient("CHED", "Cheddar", Type.CHEESE),
-                new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
-                new Ingredient("SLSA", "Salsa", Type.SAUCE),
-                new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
+                new Ingredient("FLTO", "Flour Tortilla", TypeIngredient.WRAP),
+                new Ingredient("COTO", "Corn Tortilla", TypeIngredient.WRAP),
+                new Ingredient("GRBF", "Ground Beef", TypeIngredient.PROTEIN),
+                new Ingredient("CARN", "Carnitas", TypeIngredient.PROTEIN),
+                new Ingredient("TMTO", "Diced Tomatoes", TypeIngredient.VEGGIES),
+                new Ingredient("LETC", "Lettuce", TypeIngredient.VEGGIES),
+                new Ingredient("CHED", "Cheddar", TypeIngredient.CHEESE),
+                new Ingredient("JACK", "Monterrey Jack", TypeIngredient.CHEESE),
+                new Ingredient("SLSA", "Salsa", TypeIngredient.SAUCE),
+                new Ingredient("SRCR", "Sour Cream", TypeIngredient.SAUCE)
         );
 
-        Type[] types = Ingredient.Type.values();
-        for (Type type: types){
+        TypeIngredient[] types = TypeIngredient.values();
+        for (TypeIngredient type: types){
             model.addAttribute(type.toString().toLowerCase(),
                     filterByType(ingredients, type));
         }
@@ -58,7 +58,7 @@ public class DesignTacoController {
 
     // Вспомогательний метод для фильтрации по типу
     private Iterable<Ingredient> filterByType(
-            List<Ingredient> ingredients, Type type){
+            List<Ingredient> ingredients, TypeIngredient type){
         return ingredients
                 .stream()
                 .filter(x -> x.getType().equals(type))

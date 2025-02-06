@@ -9,8 +9,8 @@ package ua.lisovich.tacos.converter;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import ua.lisovich.tacos.Ingredient;
-import ua.lisovich.tacos.Ingredient.Type;
+import ua.lisovich.tacos.entity.Ingredient;
+import ua.lisovich.tacos.entity.TypeIngredient;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,16 +21,16 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
     private Map<String, Ingredient> ingredientMap = new HashMap<>();
 
     public IngredientByIdConverter() {
-        ingredientMap.put("FLTO", new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));
-        ingredientMap.put("COTO", new Ingredient("COTO", "Corn Tortilla", Type.WRAP));
-        ingredientMap.put("GRBF", new Ingredient("GRBF", "Ground Beef", Type.PROTEIN));
-        ingredientMap.put("CARN", new Ingredient("CARN", "Carnitas", Type.PROTEIN));
-        ingredientMap.put("TMTO", new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES));
-        ingredientMap.put("LETC", new Ingredient("LETC", "Lettuce", Type.VEGGIES));
-        ingredientMap.put("CHED", new Ingredient("CHED", "Cheddar", Type.CHEESE));
-        ingredientMap.put("JACK", new Ingredient("JACK", "Monterrey Jack", Type.CHEESE));
-        ingredientMap.put("SLSA", new Ingredient("SLSA", "Salsa", Type.SAUCE));
-        ingredientMap.put("SRCR", new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
+        ingredientMap.put("FLTO", new Ingredient("FLTO", "Flour Tortilla", TypeIngredient.WRAP));
+        ingredientMap.put("COTO", new Ingredient("COTO", "Corn Tortilla", TypeIngredient.WRAP));
+        ingredientMap.put("GRBF", new Ingredient("GRBF", "Ground Beef", TypeIngredient.PROTEIN));
+        ingredientMap.put("CARN", new Ingredient("CARN", "Carnitas", TypeIngredient.PROTEIN));
+        ingredientMap.put("TMTO", new Ingredient("TMTO", "Diced Tomatoes", TypeIngredient.VEGGIES));
+        ingredientMap.put("LETC", new Ingredient("LETC", "Lettuce", TypeIngredient.VEGGIES));
+        ingredientMap.put("CHED", new Ingredient("CHED", "Cheddar", TypeIngredient.CHEESE));
+        ingredientMap.put("JACK", new Ingredient("JACK", "Monterrey Jack", TypeIngredient.CHEESE));
+        ingredientMap.put("SLSA", new Ingredient("SLSA", "Salsa", TypeIngredient.SAUCE));
+        ingredientMap.put("SRCR", new Ingredient("SRCR", "Sour Cream", TypeIngredient.SAUCE));
     }
 
     @Override

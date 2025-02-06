@@ -1,4 +1,4 @@
-package ua.lisovich.tacos;
+package ua.lisovich.tacos.entity;
 
 import lombok.Data;
 
